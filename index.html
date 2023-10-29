@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- Import the webpage's stylesheet -->
+        <link rel="stylesheet" href="/welcome-style.css">
+        <!-- Import the webpage's scripts -->
+        <script src="welcome-script.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="content">
+            
+            <div id="section1" class="section-type-1">
+                <div id="section1rect">
+                    <h3>Rash Decisions</h3>
+                </div>
+            </div>
+
+            <div id="section2" class="section-type-2">
+                <div id="section2rect">
+                    <h1>Instant and reliable rash identification.</h1>
+                </div>  
+            </div>
+
+            <div id="section3" class="section-type-2">
+                <button id="start-button">
+                    <h2>Start Now</h2>
+                </button>
+            </div>
+
+            <div id="section4" class="section-type-3">
+
+            </div>
+            <script>
+                const startButton = document.getElementById("start-button");
+        
+                startButton.addEventListener("click", () => {
+                    window.location.href = "home.html"; // Redirect to another page
+                });
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+            <script type="text/javascript">
+                // More API functions here:
+                // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+            </script>
+        </div>
+    </body>
+</html>
