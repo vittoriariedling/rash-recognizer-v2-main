@@ -14,9 +14,15 @@ async function init() {
     // const startButton = document.getElementById("start-button")
     // const content = document.getElementById("content");
     // content.style.display = "none";
+    var acc = document.getElementsByClassName("accordion");
+    var treatments = document.getElementById("treatment-label");
 
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
+    treatments.style.display = "none";
+    acc[0].style.display = "none";
+    acc[1].style.display = "none";
+    acc[2].style.display = "none";
 
     // load the model and metadata
     // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
@@ -53,7 +59,58 @@ async function predict() {
     for (let i = 0; i < maxPredictions; i++) {
         const classPrediction =
             // prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            (prediction[i].probability.toFixed(2) * 100) + "% " + prediction[i].className;
+            Math.round(prediction[i].probability.toFixed(2) * 100) + "% " + prediction[i].className;
         percentages.childNodes[i].innerHTML = classPrediction;
+
+        var acc = document.getElementsByClassName("accordion");
+        var panels = document.getElementsByClassName("panel");
+        var treatments = document.getElementById("treatment-label");
+        if (prediction[i].className == "Rashless Skin") {
+            // treatments.style.display = "none";
+            // acc[0].style.display = "none";
+            // acc[1].style.display = "none";
+            // acc[2].style.display = "none";
+            // panels[0].style.display = "none";
+            // panels[1].style.display = "none";
+            // panels[2].style.display = "none";
+            
+        } 
+        if (prediction[i].className == "Atopic Dermatitis (Eczema)") {
+            treatments.style.display = "block";
+            acc[0].style.display = "block";
+            acc[1].style.display = "none";
+            acc[2].style.display = "none";
+            panels[1].style.display = "none";
+            panels[2].style.display = "none";
+            
+        } 
+        // else {
+        //     acc[0].style.display = "none";
+        // }
+        if (prediction[i].className == "Contact Dermatitis") {
+            treatments.style.display = "block";
+            acc[0].style.display = "none";
+            acc[1].style.display = "block";
+            acc[2].style.display = "none";
+            panels[0].style.display = "none";
+            panels[2].style.display = "none";
+            
+        } 
+        // else {
+        //     acc[1].style.display = "none";
+        // }
+        if (prediction[i].className == "Urticaria (Hives)") {
+            treatments.style.display = "block";
+            acc[0].style.display = "none";
+            acc[1].style.display = "none";
+            acc[2].style.display = "block";
+            panels[0].style.display = "none";
+            panels[1].style.display = "none";
+            
+        } 
+        // else {
+        //     acc[2].style.display = "none";
+        // }
+            
     }
 }
